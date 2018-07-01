@@ -12,13 +12,13 @@ import webdev.models.Widget;
 import webdev.repositories.WidgetRepository;
 
 @RestController 
-@CrossOrigin(origins= "*")
+@CrossOrigin(origins= "*",maxAge = 3600)
 
 public class WidgetService {
 	   @Autowired
 	   WidgetRepository repository;
 	   
-	   @PostMapping("/api/widget/save")
+	   @PostMapping("/api/widget")
 	   public void saveAllWidgets(@RequestBody List<Widget> widgets) {
 		   repository.deleteAll();
 		   for(Widget widget:widgets){
